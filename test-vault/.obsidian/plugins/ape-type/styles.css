@@ -1,0 +1,750 @@
+/* ── Ape Type — Monkey Type-inspired theme ───────────────────────────────── */
+
+:root {
+  --ape-bg:          #323437;
+  --ape-sub:         #646669;
+  --ape-sub-alt:     #3a3c40;
+  --ape-main:        #e2b714;
+  --ape-text:        #d1d0c5;
+  --ape-error:       #ca4754;
+  --ape-error-extra: #7e2a30;
+  --ape-correct:     #d1d0c5;
+  --ape-font:        "Roboto Mono", "Courier New", Courier, monospace;
+  --ape-word-size:   24px;
+  --ape-line-height: 50px;
+}
+
+/* ── Themes ──────────────────────────────────────────────────────────────── */
+
+.ape-theme-light {
+  --ape-bg:          #f5f5f0;
+  --ape-sub:         #999592;
+  --ape-sub-alt:     #e0dfdb;
+  --ape-main:        #e2b714;
+  --ape-text:        #323437;
+  --ape-error:       #ca4754;
+  --ape-error-extra: #f0c4c7;
+  --ape-correct:     #323437;
+}
+
+.ape-theme-nord {
+  --ape-bg:          #2e3440;
+  --ape-sub:         #4c566a;
+  --ape-sub-alt:     #3b4252;
+  --ape-main:        #88c0d0;
+  --ape-text:        #eceff4;
+  --ape-error:       #bf616a;
+  --ape-error-extra: #4c2428;
+  --ape-correct:     #eceff4;
+}
+
+.ape-theme-dracula {
+  --ape-bg:          #282a36;
+  --ape-sub:         #6272a4;
+  --ape-sub-alt:     #343746;
+  --ape-main:        #bd93f9;
+  --ape-text:        #f8f8f2;
+  --ape-error:       #ff5555;
+  --ape-error-extra: #7a2323;
+  --ape-correct:     #f8f8f2;
+}
+
+.ape-type-view {
+  background: var(--ape-bg);
+  color: var(--ape-text);
+  font-family: var(--ape-font);
+  height: 100%;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.ape-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px 64px;
+  min-height: 100%;
+  box-sizing: border-box;
+  gap: 24px;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────── */
+
+.ape-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 2px;
+  user-select: none;
+  max-width: 900px;
+  width: 100%;
+}
+
+.ape-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.ape-toolbar-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--ape-sub);
+  margin: 0 8px;
+  opacity: 0.4;
+}
+
+.ape-btn {
+  background: none;
+  border: none;
+  color: var(--ape-sub);
+  cursor: pointer;
+  font-family: var(--ape-font);
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: color 0.1s, background 0.1s;
+  line-height: 1;
+}
+
+.ape-btn:hover {
+  color: var(--ape-text);
+  background: var(--ape-sub-alt);
+  box-shadow: none;
+}
+
+.ape-btn.active {
+  color: var(--ape-main);
+}
+
+/* ── Live stats bar ──────────────────────────────────────────────────────── */
+
+.ape-live-stats {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  transition: opacity 0.2s;
+  min-height: 36px;
+}
+
+.ape-live-wpm {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.ape-live-wpm-val {
+  color: var(--ape-main);
+  font-size: 32px;
+  font-weight: 700;
+  min-width: 60px;
+}
+
+.ape-live-timer {
+  color: var(--ape-main);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* ── Words area ──────────────────────────────────────────────────────────── */
+
+.ape-words-area {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+}
+
+.ape-capslock {
+  background: var(--ape-main);
+  color: var(--ape-bg);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+.ape-words-container {
+  position: relative;
+  height: calc(var(--ape-line-height) * 3);
+  overflow: hidden;
+  cursor: text;
+}
+
+.ape-words-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: flex-start;
+  will-change: transform;
+}
+
+.ape-word {
+  display: inline-flex;
+  position: relative;
+}
+
+.ape-word.error {
+  border-bottom: 2px solid var(--ape-error);
+}
+
+.ape-letter {
+  color: var(--ape-sub);
+  font-size: var(--ape-word-size);
+  line-height: var(--ape-line-height);
+  font-family: var(--ape-font);
+  white-space: pre;
+  transition: color 0.05s;
+}
+
+.ape-letter.correct {
+  color: var(--ape-correct);
+}
+
+.ape-letter.incorrect {
+  color: var(--ape-error);
+}
+
+.ape-letter.extra {
+  color: var(--ape-error-extra);
+}
+
+/* ── Caret ───────────────────────────────────────────────────────────────── */
+
+.ape-caret {
+  position: absolute;
+  width: 2px;
+  height: var(--ape-line-height);
+  background: var(--ape-main);
+  border-radius: 2px;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  transition: left 0.06s, top 0.06s;
+  animation: ape-blink 1s step-end infinite;
+  z-index: 1;
+}
+
+.ape-caret.blink-pause {
+  animation: none;
+  opacity: 0.3;
+}
+
+@keyframes ape-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Caret stops blinking while typing (reset animation on position change via JS transitions) */
+.ape-words-area:focus-within .ape-caret {
+  animation: none;
+  opacity: 1;
+}
+
+/* ── Quote source ────────────────────────────────────────────────────────── */
+
+.ape-quote-source {
+  margin-top: 12px;
+  color: var(--ape-sub);
+  font-size: 13px;
+  min-height: 20px;
+}
+
+/* ── Hidden input ────────────────────────────────────────────────────────── */
+
+.ape-hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+/* ── Focus overlay ───────────────────────────────────────────────────────── */
+
+.ape-focus-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  background: rgba(50, 52, 55, 0.85);
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.ape-focus-msg {
+  color: var(--ape-sub);
+  font-size: 14px;
+}
+
+/* ── Restart flash ───────────────────────────────────────────────────────── */
+
+@keyframes ape-restart {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+.ape-restart-flash {
+  animation: ape-restart 0.15s ease-in-out;
+}
+
+/* ── Results screen ──────────────────────────────────────────────────────── */
+
+.ape-results {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  outline: none;
+}
+
+.ape-results-main {
+  display: flex;
+  align-items: flex-end;
+  gap: 48px;
+}
+
+.ape-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ape-stat-label {
+  color: var(--ape-main);
+  font-size: 13px;
+  text-transform: lowercase;
+}
+
+.ape-stat-value {
+  color: var(--ape-text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.ape-stat.large .ape-stat-value {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ape-results-sub {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* ── Chart ───────────────────────────────────────────────────────────────── */
+
+.ape-results-chart {
+  width: 100%;
+}
+
+.ape-chart-svg {
+  width: 100%;
+  height: auto;
+}
+
+.ape-chart-wpm {
+  stroke: var(--ape-main);
+  stroke-width: 2;
+}
+
+.ape-chart-raw {
+  stroke: var(--ape-sub);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.ape-chart-label {
+  fill: var(--ape-sub);
+  font-size: 11px;
+  font-family: var(--ape-font);
+}
+
+/* ── PB / actions ────────────────────────────────────────────────────────── */
+
+.ape-results-pb {
+  color: var(--ape-sub);
+  font-size: 14px;
+}
+
+.ape-pb-new {
+  color: var(--ape-main);
+  font-weight: 700;
+}
+
+.ape-pb-label {
+  color: var(--ape-sub);
+}
+
+.ape-pb-val {
+  color: var(--ape-text);
+}
+
+.ape-results-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ape-restart-btn {
+  background: var(--ape-sub-alt);
+  border: none;
+  border-radius: 8px;
+  color: var(--ape-sub);
+  cursor: pointer;
+  font-family: var(--ape-font);
+  font-size: 14px;
+  padding: 10px 20px;
+  transition: color 0.1s, background 0.1s;
+}
+
+.ape-restart-btn:hover {
+  color: var(--ape-text);
+  background: #46484e;
+}
+
+.ape-hint {
+  color: var(--ape-sub);
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ── Improve mode hint ───────────────────────────────────────────────────── */
+
+.ape-improve-hint {
+  width: 100%;
+  max-width: 900px;
+  color: var(--ape-main);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  min-height: 20px;
+}
+
+/* ── Progress chart (multi-line) ─────────────────────────────────────────── */
+
+.ape-progress-chart-wrap {
+  width: 100%;
+}
+
+.ape-progress-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-top: 10px;
+}
+
+.ape-progress-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--ape-sub);
+}
+
+.ape-progress-legend-dot {
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+/* line colours used for both SVG strokes and legend dots */
+.ape-chart-line-0 { background: #e2b714; }
+.ape-chart-line-1 { background: #8fa4af; }
+.ape-chart-line-2 { background: #4db6ac; }
+.ape-chart-line-3 { background: #f59563; }
+.ape-chart-line-4 { background: #b07ddc; }
+
+.ape-chart-progress-0 { stroke: #e2b714; stroke-width: 2; }
+.ape-chart-progress-1 { stroke: #8fa4af; stroke-width: 2; }
+.ape-chart-progress-2 { stroke: #4db6ac; stroke-width: 2; }
+.ape-chart-progress-3 { stroke: #f59563; stroke-width: 2; }
+.ape-chart-progress-4 { stroke: #b07ddc; stroke-width: 2; }
+
+/* ── Analytics section ───────────────────────────────────────────────────── */
+
+.ape-analytics-summary {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.ape-analytics-chars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ape-analytics-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ape-analytics-char {
+  color: var(--ape-text);
+  font-size: 18px;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+}
+
+.ape-analytics-bar-track {
+  flex: 1;
+  height: 6px;
+  background: var(--ape-sub-alt);
+  border-radius: 3px;
+  max-width: 280px;
+  overflow: hidden;
+}
+
+.ape-analytics-bar-fill {
+  height: 100%;
+  background: var(--ape-error);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.ape-analytics-rate {
+  color: var(--ape-sub);
+  font-size: 12px;
+  min-width: 110px;
+}
+
+/* ── Embedded in note ────────────────────────────────────────────────────── */
+
+.ape-type-view.ape-type-embedded {
+  height: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ape-sub-alt);
+  border-top: 2px solid var(--ape-main);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+  /* Scale typography for note context */
+  --ape-word-size: 18px;
+  --ape-line-height: 38px;
+}
+
+.ape-type-embedded .ape-wrapper {
+  padding: 14px 20px 22px;
+  gap: 10px;
+  min-height: 0;
+}
+
+/* Embed title — hidden in tab view, shown only inside a note */
+.ape-embed-title {
+  display: none;
+}
+
+.ape-type-embedded .ape-embed-title {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  color: var(--ape-main);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ape-sub-alt);
+}
+
+/* Collapse toolbar: hide difficulty + modifiers, keep mode + pipe + values + history */
+.ape-type-embedded .ape-toolbar-diff,
+.ape-type-embedded .ape-sep-after-diff,
+.ape-type-embedded .ape-toolbar-mods,
+.ape-type-embedded .ape-sep-after-mods {
+  display: none;
+}
+
+.ape-type-embedded .ape-toolbar {
+  gap: 2px 1px;
+}
+
+/* Visible pipe between mode buttons and value buttons */
+.ape-type-embedded .ape-sep-mode-values {
+  width: 1px;
+  height: 18px;
+  background: var(--ape-sub);
+  opacity: 0.5;
+  margin: 0 10px;
+}
+
+/* Compact live stats */
+.ape-type-embedded .ape-live-stats {
+  min-height: 24px;
+  gap: 14px;
+}
+
+.ape-type-embedded .ape-live-wpm-val,
+.ape-type-embedded .ape-live-timer {
+  font-size: 22px;
+}
+
+/* Compact improve hint */
+.ape-type-embedded .ape-improve-hint {
+  font-size: 12px;
+}
+
+/* Compact results screen */
+.ape-type-embedded .ape-stat.large .ape-stat-value {
+  font-size: 48px;
+}
+
+.ape-type-embedded .ape-results-main {
+  gap: 32px;
+}
+
+.ape-type-embedded .ape-results-sub {
+  gap: 20px;
+}
+
+.ape-type-embedded .ape-results {
+  gap: 18px;
+}
+
+.ape-type-embedded .ape-restart-btn {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Scrollable history within embed */
+.ape-type-embedded .ape-history {
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+/* Focus overlay: match inner radius */
+.ape-type-embedded .ape-focus-overlay {
+  border-radius: 6px;
+}
+
+/* ── History screen ──────────────────────────────────────────────────────── */
+
+.ape-history {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  outline: none;
+}
+
+.ape-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ape-history-title {
+  color: var(--ape-text);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ape-history-empty {
+  color: var(--ape-sub);
+  font-size: 16px;
+}
+
+.ape-history-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ape-history-section-title {
+  color: var(--ape-main);
+  font-size: 12px;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+}
+
+.ape-history-pb-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ape-history-pb-card {
+  background: var(--ape-sub-alt);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 110px;
+}
+
+.ape-history-pb-mode {
+  color: var(--ape-sub);
+  font-size: 11px;
+  text-transform: lowercase;
+}
+
+.ape-history-pb-wpm {
+  color: var(--ape-main);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ape-history-pb-acc {
+  color: var(--ape-text);
+  font-size: 12px;
+}
+
+.ape-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.ape-history-table th {
+  color: var(--ape-main);
+  text-align: left;
+  font-weight: 400;
+  font-size: 11px;
+  padding: 6px 16px 6px 0;
+  border-bottom: 1px solid var(--ape-sub-alt);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+
+.ape-history-table td {
+  color: var(--ape-text);
+  padding: 8px 16px 8px 0;
+  border-bottom: 1px solid var(--ape-sub-alt);
+}
+
+.ape-history-table tbody tr:hover td {
+  color: var(--ape-text);
+  background: var(--ape-sub-alt);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  :root {
+    --ape-word-size: 18px;
+    --ape-line-height: 40px;
+  }
+  .ape-stat.large .ape-stat-value { font-size: 48px; }
+  .ape-live-wpm-val, .ape-live-timer { font-size: 24px; }
+  .ape-toolbar { gap: 4px; }
+}

@@ -1,0 +1,8 @@
+node_modules/
+main.js
+*.js.map
+src/data/english_words_raw.json
+src/data/english_quotes_raw.json
+test-vault/.obsidian/workspace*
+test-vault/.obsidian/plugins/ape-type/main.js
+test-vault/.obsidian/plugins/ape-type/data.json

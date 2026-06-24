@@ -1,0 +1,26 @@
+{
+  "name": "ape-type",
+  "version": "1.0.0",
+  "description": "A Monkey Type-inspired typing speed test for Obsidian",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs production",
+    "build:fast": "node esbuild.config.mjs production",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "generate-data": "node scripts/generate-data.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "esbuild": "0.20.2",
+    "obsidian": "latest",
+    "tslib": "2.6.0",
+    "typescript": "5.3.3",
+    "vitest": "^1.3.1"
+  },
+  "allowScripts": {
+    "esbuild@0.20.2": true,
+    "esbuild@0.21.5": true
+  }
+}

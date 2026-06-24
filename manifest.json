@@ -1,0 +1,10 @@
+{
+  "id": "ape-type",
+  "name": "Ape Type",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "A Monkey Type-inspired typing speed test for Obsidian",
+  "author": "Reverberation1",
+  "authorUrl": "https://github.com/Reverberation1",
+  "isDesktopOnly": false
+}
