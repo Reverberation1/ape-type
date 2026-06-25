@@ -1,5 +1,10 @@
 # Ape Type — Changelog
 
+## [1.4.0] — 2026-06-25
+
+### Added
+- **Gruvbox themes (BK-019):** Two new colour schemes in Settings → Theme: Gruvbox Dark (bg `#282828`, yellow accent `#d79921`, cream text) and Gruvbox Light (bg `#fff9d4`, muted tan dividers `#e2d9b3`, ochre accent `#d49d26`, dark brown text). Light palette colours supplied by user; dark palette uses the canonical Gruvbox Dark set.
+
 ## [1.3.0] — 2026-06-24
 
 ### Added

@@ -53,7 +53,7 @@ export interface PluginData {
   personalBests: Record<string, PersonalBest>;
 }
 
-export type Theme = 'dark' | 'light' | 'nord' | 'dracula';
+export type Theme = 'dark' | 'light' | 'nord' | 'dracula' | 'gruvbox-dark' | 'gruvbox-light';
 
 export interface ApeTypeSettings {
   defaultMode: TestMode;

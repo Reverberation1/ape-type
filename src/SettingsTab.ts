@@ -94,10 +94,12 @@ export class ApeTypeSettingTab extends PluginSettingTab {
       .setDesc('Colour scheme for Ape Type')
       .addDropdown((d) =>
         d
-          .addOption('dark',    'Dark (default)')
-          .addOption('light',   'Light')
-          .addOption('nord',    'Nord')
-          .addOption('dracula', 'Dracula')
+          .addOption('dark',         'Dark (default)')
+          .addOption('light',        'Light')
+          .addOption('nord',         'Nord')
+          .addOption('dracula',      'Dracula')
+          .addOption('gruvbox-dark', 'Gruvbox Dark')
+          .addOption('gruvbox-light','Gruvbox Light')
           .setValue(this.plugin.settings.theme)
           .onChange(async (v) => {
             this.plugin.settings.theme = v as Theme;
