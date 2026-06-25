@@ -297,7 +297,6 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
-  background: rgba(50, 52, 55, 0.85);
   border-radius: 4px;
   cursor: pointer;
   z-index: 2;
