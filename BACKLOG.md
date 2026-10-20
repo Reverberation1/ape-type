@@ -22,4 +22,4 @@
 | BK-018 | Improvement mode — weighted word pool biased toward characters and specific words the user has previously struggled with; shows targeting hint in live bar  | [x]    |
 | BK-019 | Gruvbox Dark and Gruvbox Light themes                                                    | [x]    |
 | BK-020 | Publish a GitHub release — bump `manifest.json`/`package.json` from 1.0.0 to match CHANGELOG (1.4.0), attach `main.js`/`manifest.json`/`styles.css`, restore the download path in README | [x]    |
-| BK-021 | Pin `obsidian` devDependency to an exact version (currently `"latest"`, so fresh clones get different typings) | [ ]    |
+| BK-021 | Pin `obsidian` devDependency to an exact version (currently `"latest"`, so fresh clones get different typings) | [x]    |
