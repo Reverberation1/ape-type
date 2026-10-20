@@ -1,6 +1,11 @@
 # Ape Type — Changelog
 
-## [Unreleased]
+## [1.4.0 release housekeeping] — 2026-10-20
+
+Repo, docs and config changes made while publishing the first GitHub release (tag `1.4.0`). No plugin code changed; the released `main.js` is functionally the 1.4.0 build described below.
+
+### Dependencies
+- **Pinned `obsidian` devDependency to `1.13.1` (BK-021):** it was `"latest"`, so each fresh clone resolved whatever was newest and type-checking could change with no change to this repo. 1.13.1 is the version already locked and tested; upgrade deliberately.
 
 ### Changed
 - **Version metadata and first GitHub release (BK-020):** `manifest.json` and `package.json` bumped from 1.0.0 to 1.4.0 so they match this changelog. Obsidian (and tools like BRAT) read the manifest version, so a release tagged `1.4.0` needed it to agree. README now offers the release download again, with build-from-source as the alternative. The plugin code is the same as 1.4.0; everything below is docs/config.
