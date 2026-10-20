@@ -49,6 +49,28 @@
   --ape-correct:     #f8f8f2;
 }
 
+.ape-theme-gruvbox-dark {
+  --ape-bg:          #282828;
+  --ape-sub:         #a89984;
+  --ape-sub-alt:     #3c3836;
+  --ape-main:        #d79921;
+  --ape-text:        #ebdbb2;
+  --ape-error:       #cc241d;
+  --ape-error-extra: #6b1414;
+  --ape-correct:     #ebdbb2;
+}
+
+.ape-theme-gruvbox-light {
+  --ape-bg:          #fff9d4;
+  --ape-sub:         #8f8779;
+  --ape-sub-alt:     #e2d9b3;
+  --ape-main:        #d49d26;
+  --ape-text:        #3c3836;
+  --ape-error:       #c22326;
+  --ape-error-extra: #f5c3c3;
+  --ape-correct:     #3c3836;
+}
+
 .ape-type-view {
   background: var(--ape-bg);
   color: var(--ape-text);
@@ -275,7 +297,6 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
-  background: rgba(50, 52, 55, 0.85);
   border-radius: 4px;
   cursor: pointer;
   z-index: 2;

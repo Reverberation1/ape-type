@@ -1,5 +1,16 @@
 # Ape Type — Changelog
 
+## [Unreleased]
+
+### Fixed
+- **Type-check:** `tsconfig.json` now sets `skipLibCheck: true`. `obsidian@1.13.1`'s own `.d.ts` fails to compile (`Menu`/`Modal`/`PopoverSuggest` don't implement `HistoryHandler.onHistoryBack`), so bare `tsc` and editors reported 3 errors even though `npm run build` already passed `--skipLibCheck`. Config and build script now agree.
+- **README install instructions:** the "download the latest release" path pointed at a releases page with no releases, and the test vault was described as ready-to-run although `main.js` is gitignored and the build writes it to the repo root. Installation is now build-from-source with the copy step spelled out. Also corrected the command name (**Open typing test**), added the Gruvbox themes, and removed settings the settings tab doesn't have (punctuation/numbers/difficulty live in the toolbar).
+
+## [1.4.0] — 2026-06-25
+
+### Added
+- **Gruvbox themes (BK-019):** Two new colour schemes in Settings → Theme: Gruvbox Dark (bg `#282828`, yellow accent `#d79921`, cream text) and Gruvbox Light (bg `#fff9d4`, muted tan dividers `#e2d9b3`, ochre accent `#d49d26`, dark brown text). Light palette colours supplied by user; dark palette uses the canonical Gruvbox Dark set.
+
 ## [1.3.0] — 2026-06-24
 
 ### Added
