@@ -39,7 +39,17 @@ A [Monkey Type](https://monkeytype.com)-inspired typing speed test built as an O
 
 ## Installation
 
-Ape Type is not yet listed in the Obsidian community plugins directory, and no pre-built release has been published yet, so install it by building from source.
+Ape Type is not yet listed in the Obsidian community plugins directory. Install it manually from a release, or build it from source.
+
+### From a release (recommended)
+
+1. Open the [latest release](https://github.com/Reverberation1/ape-type/releases/latest) and download `main.js`, `manifest.json`, and `styles.css`.
+2. Create the folder `<your vault>/.obsidian/plugins/ape-type/` and put the three files in it. The `.obsidian` folder is hidden by default — enable "show hidden files" in your file manager.
+3. Restart Obsidian (or reload it), open **Settings → Community plugins**, turn community plugins on if they are currently restricted, and enable **Ape Type**.
+
+To update, download the new release's files and overwrite the old ones.
+
+### From source
 
 **Requirements:** Node.js 18+, npm, git
 

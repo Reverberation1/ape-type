@@ -1,6 +1,6 @@
 {
   "name": "ape-type",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "description": "A Monkey Type-inspired typing speed test for Obsidian",
   "main": "main.js",
   "scripts": {

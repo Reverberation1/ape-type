@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+- **Version metadata and first GitHub release (BK-020):** `manifest.json` and `package.json` bumped from 1.0.0 to 1.4.0 so they match this changelog. Obsidian (and tools like BRAT) read the manifest version, so a release tagged `1.4.0` needed it to agree. README now offers the release download again, with build-from-source as the alternative. The plugin code is the same as 1.4.0; everything below is docs/config.
+- **Charter approved:** `CONSTITUTION.md` stamped approved and lists the features built before it as grandfathered, so new features can enter the workflow. Its "`main.js` is tracked in git" invariant was false (`main.js` is gitignored) and now states the real policy.
+- **Stopped tracking `test-vault/.obsidian/plugins/ape-type/main.js`:** it was force-added despite `.gitignore` and had already drifted from the real build. The local copy stays; rebuild and copy it in as the README describes.
+
 ### Fixed
 - **Type-check:** `tsconfig.json` now sets `skipLibCheck: true`. `obsidian@1.13.1`'s own `.d.ts` fails to compile (`Menu`/`Modal`/`PopoverSuggest` don't implement `HistoryHandler.onHistoryBack`), so bare `tsc` and editors reported 3 errors even though `npm run build` already passed `--skipLibCheck`. Config and build script now agree.
 - **README install instructions:** the "download the latest release" path pointed at a releases page with no releases, and the test vault was described as ready-to-run although `main.js` is gitignored and the build writes it to the repo root. Installation is now build-from-source with the copy step spelled out. Also corrected the command name (**Open typing test**), added the Gruvbox themes, and removed settings the settings tab doesn't have (punctuation/numbers/difficulty live in the toolbar).
